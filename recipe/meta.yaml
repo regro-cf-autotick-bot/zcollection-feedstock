@@ -1,5 +1,5 @@
 {% set name = "zcollection" %}
-{% set version = "2023.3.2" %}
+{% set version = "2023.5.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/zcollection-{{ version }}.tar.gz
-  sha256: 33fc673442d3c55e3646b1844adf881dc5828abaa742a9a484b4690fa1a43a68
+  sha256: 57b07406734e0be3367110e76badce89cdf67ee25d2500900d3329766bfcc304
 
 build:
   noarch: python
@@ -21,16 +21,6 @@ requirements:
     - python >=3.8
     - setuptools >=45
     - pip
-    - dask-core >=2022.8.0
-    - distributed
-    - fasteners
-    - fsspec
-    - numcodecs
-    - numpy >=1.20
-    - pandas
-    - pyarrow
-    - xarray
-    - zarr >=2.11
   run:
     - python >=3.8
     - dask-core >=2022.8.0
@@ -39,21 +29,20 @@ requirements:
     - fsspec
     - numcodecs
     - numpy >=1.20
-    - pandas
-    - pyarrow
     - xarray
     - zarr >=2.11
 
 test:
   requires:
     - pytest
+    - pyarrow
     - s3fs
   commands:
     - pytest --pyargs zcollection
 
 about:
   home: https://github.com/CNES/zcollection
-  summary: 'Handle a collection of Zarr groups'
+  summary: Handle a collection of Zarr groups
   description: |
     This project is a Python library manipulating data split into a collection of groups stored in Zarr format.
     This collection allows dividing a dataset into several partitions to facilitate acquisitions or updates made
