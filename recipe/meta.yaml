@@ -1,5 +1,5 @@
 {% set name = "zcollection" %}
-{% set version = "2023.11.0" %}
+{% set version = "2023.11.1" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/zcollection-{{ version }}.tar.gz
-  sha256: 8c8383a64fd8ee615527b2d473fcbae4195331d07b35006110487b3c8ddaeed0
+  sha256: 5f0b686290b79777e1f3344e7a646f67ba8b680712a56a41db998076f45a7b4a
 
 build:
   noarch: python
