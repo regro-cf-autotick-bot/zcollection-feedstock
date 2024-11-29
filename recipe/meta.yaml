@@ -6,23 +6,23 @@ package:
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
   sha256: b2b3fa26f7d9638c75413ac6bc07d07a103bc105dddc3e37d367e8a0109c10cb
 
 build:
   noarch: python
   script: {{ PYTHON }} -m pip install . -vv
-  number: 0
+  number: 1
 
 requirements:
   # All dependencies are required until we change the way the
   # version number and file are generated.
   host:
-    - python >=3.8
+    - python {{ python_min }}
     - setuptools >=45
     - pip
   run:
-    - python >=3.8
+    - python >={{ python_min }}
     - dask-core >=2022.8.0
     - distributed
     - fasteners
@@ -37,6 +37,7 @@ test:
     - pytest
     - pyarrow
     - s3fs
+    - python {{ python_min }}
   commands:
     - pytest --pyargs zcollection
 
